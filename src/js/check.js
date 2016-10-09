@@ -26,7 +26,7 @@ function getMessage(a, b) {
     for (var j = 0; j < a.length; j++) {
       distancePath = distancePath + (a[j] * b[j]);
     }
-    return 'Я прошёл' + distancePath + 'метров';
+    return 'Я прошёл ' + distancePath + ' метров';
   }
 
   return 'Переданы некорректные данные';
