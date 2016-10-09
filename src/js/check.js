@@ -1,4 +1,3 @@
-'use strict';
 
 function getMessage(a, b) {
   if (typeof a === 'boolean') {
@@ -23,9 +22,9 @@ function getMessage(a, b) {
 
   if (typeof a === 'array' && typeof b === 'array') {
     var distancePath = 0;
-    for (var i = 0; i < a.length; i++) {
-      distancePath = distancePath + (a[i]*b[i]);
-    };
+    for (var j = 0; j < a.length; j++) {
+      distancePath = distancePath + (a[j] * b[j]);
+    }
     return 'Я прошёл' + distancePath + 'метров';
   }
 
