@@ -1,4 +1,5 @@
 'use strict';
+/*eslint-disable no-unused-vars*/
 
 function getMessage(a, b) {
   if (typeof a === 'boolean') {
@@ -13,7 +14,7 @@ function getMessage(a, b) {
     return 'Я прыгнул на ' + a * 100 + ' сантиметров';
   }
 
-  if (typeof a === 'object') {
+   if (typeof a === 'object' && typeof b !== 'object') {
     var numberOfSteps = 0;
     for (var i = 0; i < a.length; i++) {
       numberOfSteps = numberOfSteps + a[i];
