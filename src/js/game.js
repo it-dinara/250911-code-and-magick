@@ -413,8 +413,8 @@ window.Game = (function() {
       this.ctx.fillStyle = '#ffffff';
       this.ctx.fillRect(290, 30, 300, 150);
 
-      this.ctx.fillStyle = "black";
-      this.ctx.strokeStyle = "black";
+      this.ctx.fillStyle = 'black';
+      this.ctx.strokeStyle = 'black';
       this.ctx.font = '16px PT Mono';
       this.ctx.textBaseline = 'hanging';
 
