@@ -420,8 +420,7 @@ window.Game = (function() {
 
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          this.ctx.fillText('Поздравляю, ', 370, 75);
-          this.ctx.fillText('ты победил!', 370, 110);
+          this.foo('Поздравляю, ты победил!', 120, 370, 75, 25);
           console.log('you have won!');
           break;
 
@@ -436,11 +435,28 @@ window.Game = (function() {
           break;
 
         case Verdict.INTRO:
-          this.ctx.fillText('Приветствую!', 340, 80);
-          this.ctx.fillText('Нажми пробел для старта', 340, 115);
+          this.foo('Приветствую! Нажми пробел для старта', 120, 340, 80, 25);
           console.log('welcome to the game! Press Space to start');
           break;
       }
+    },
+
+    foo: function(text, maxWidth, x, y, lineHeight) {
+      var words = text.split(' ');
+      var line = '';
+
+      for(var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var testWidth = this.ctx.measureText(testLine).width;
+        if (testWidth > maxWidth && n > 0) {
+          this.ctx.fillText(line, x, y);
+          line = words[n] + ' ';
+          y += lineHeight; //y=75+25;
+        } else {
+          line = testLine;
+        }
+      }
+      this.ctx.fillText(line, x, y);
     },
 
     /**
