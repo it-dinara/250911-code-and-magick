@@ -425,17 +425,17 @@ window.Game = (function() {
           break;
 
         case Verdict.FAIL:
-          this.ctx.fillText('Ты проиграл!', 360, 90);
+          this.foo('Ты проиграл!', 140, 360, 90, 25);
           console.log('you have failed!');
           break;
 
         case Verdict.PAUSE:
-          this.ctx.fillText('Пауза', 350, 90);
+          this.foo('Пауза', 120, 360, 90, 25);
           console.log('game is on pause!');
           break;
 
         case Verdict.INTRO:
-          this.foo('Приветствую! Нажми пробел для старта', 120, 340, 80, 25);
+          this.foo('Приветствую! Нажми пробел для старта', 140, 360, 75, 25);
           console.log('welcome to the game! Press Space to start');
           break;
       }
@@ -458,6 +458,7 @@ window.Game = (function() {
       }
       this.ctx.fillText(line, x, y);
     },
+
 
     /**
      * Предзагрузка необходимых изображений для уровня.
