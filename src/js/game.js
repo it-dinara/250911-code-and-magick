@@ -420,28 +420,45 @@ window.Game = (function() {
 
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          this.ctx.fillText('Поздравляю, ', 370, 75);
-          this.ctx.fillText('ты победил!', 370, 110);
+          this.foo('Поздравляю, ты победил!', 120, 370, 75, 25);
           console.log('you have won!');
           break;
 
         case Verdict.FAIL:
-          this.ctx.fillText('Ты проиграл!', 360, 90);
+          this.foo('Ты проиграл!', 140, 360, 90, 25);
           console.log('you have failed!');
           break;
 
         case Verdict.PAUSE:
-          this.ctx.fillText('Пауза', 350, 90);
+          this.foo('Пауза', 120, 360, 90, 25);
           console.log('game is on pause!');
           break;
 
         case Verdict.INTRO:
-          this.ctx.fillText('Приветствую!', 340, 80);
-          this.ctx.fillText('Нажми пробел для старта', 340, 115);
+          this.foo('Приветствую! Нажми пробел для старта', 140, 360, 75, 25);
           console.log('welcome to the game! Press Space to start');
           break;
       }
     },
+
+    foo: function(text, maxWidth, x, y, lineHeight) {
+      var words = text.split(' ');
+      var line = '';
+
+      for(var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var testWidth = this.ctx.measureText(testLine).width;
+        if (testWidth > maxWidth && n > 0) {
+          this.ctx.fillText(line, x, y);
+          line = words[n] + ' ';
+          y += lineHeight; //y=75+25;
+        } else {
+          line = testLine;
+        }
+      }
+      this.ctx.fillText(line, x, y);
+    },
+
 
     /**
      * Предзагрузка необходимых изображений для уровня.
